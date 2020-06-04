@@ -36,11 +36,30 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Aplikasi Galeri Foto'),
+        title: Text('Aplikasi Foto Grid Sederhana'),
         backgroundColor: Colors.cyan,
       ),
+      body: new GridView.count(
+        crossAxisCount: 3,
+        children: _daftarFoto(30),
+      )
     );
   }
+}
+List<Widget> _daftarFoto(jumlah){
+  List<Container> containers = new List<Container>.generate(jumlah,
+      (int index){
+        //index 0, 1, 2
+        final fileFoto = 'foto/makanan(${index+1}).jpg';
+        return new Container(
+          child: new Image.asset(
+            fileFoto,
+            fit: BoxFit.cover,
+          ),
+          padding: EdgeInsets.all(4.0),
+        );
+      });
+  return containers;
 }
 
 
